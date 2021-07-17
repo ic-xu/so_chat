@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'chat/chat_message_list.dart';
 import 'fitness_app/fitness_app_home_screen.dart';
+import 'login/login_screen.dart';
 import 'navigation_home_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'introduction_animation/introduction_animation_screen.dart';
@@ -43,7 +44,8 @@ class MyApp extends StatelessWidget {
         //     builder:(context) => FitnessAppHomeScreen()
         // ));
       // home: NavigationHomeScreen(),
-      home: EnmojApp(),
+      home: LoginScreen(),
+        // EnmojApp(),
     );
   }
 }

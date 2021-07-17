@@ -10,7 +10,7 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		iMBv/zCEJ69C3LxRuVCZoiLA3+0=
+		cHzDhG/h/FQG7kQTFLjUysMksQM=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>flutter_assets/NOTICES</key>
 		<data>
-		xoxftdPECDFvXz0cBFXdKv5AnOM=
+		sx64cyJ5ip0iQC7i/n8N/163yTM=
 		</data>
 		<key>flutter_assets/assets/design_course/design_course.png</key>
 		<data>
@@ -246,11 +246,15 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		c+7HgPcArFvKx7r696/C5YBV3Iw=
+		/0rMScg3ZyxQ2kA3a+keWUvAClQ=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
 		P7bb/oR3EhwqCIH1M6LyTuBIWYU=
+		</data>
+		<key>flutter_assets/packages/flutter_login/assets/images/ecorp.png</key>
+		<data>
+		fPD6+F3Vq+sf046sFF5+KZCXeL0=
 		</data>
 		<key>flutter_assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf</key>
 		<data>
@@ -275,11 +279,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iMBv/zCEJ69C3LxRuVCZoiLA3+0=
+			cHzDhG/h/FQG7kQTFLjUysMksQM=
 			</data>
 			<key>hash2</key>
 			<data>
-			egsr0/z6vq2EGBifIRdTX0Qnfniw5tCGxjvygVvMCGE=
+			Y4gEFDCC8WevZ6nqKvl4gd7Tz5zzFy3AtZV+PZ44v10=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -297,11 +301,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xoxftdPECDFvXz0cBFXdKv5AnOM=
+			sx64cyJ5ip0iQC7i/n8N/163yTM=
 			</data>
 			<key>hash2</key>
 			<data>
-			hhYGmfqaLDkwGjGn/te3Vm7LYm7tCztDb6H8ud/b3XY=
+			n0rATMdKVLKjdrqPkrcdms2p3Ynoc3Pc6Po425/R53o=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/design_course/design_course.png</key>
@@ -924,11 +928,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			c+7HgPcArFvKx7r696/C5YBV3Iw=
+			/0rMScg3ZyxQ2kA3a+keWUvAClQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			HmFAZSkzhTfNa+wDcCXw9c76U8enNtEM4C5i50U6QOY=
+			EJwQpX+Z1jVVORuI7EfbKD5+7Bep5n/OFzMTjS2VYPY=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -940,6 +944,17 @@
 			<key>hash2</key>
 			<data>
 			x6NX+tjyECiQtyzbbjyY8U2zoZ7GDbJtE+T+k/dzgI0=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/flutter_login/assets/images/ecorp.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			fPD6+F3Vq+sf046sFF5+KZCXeL0=
+			</data>
+			<key>hash2</key>
+			<data>
+			/Q7I6ubQ6CHGZWoU3SML5ibD+7SKoGBFNWlPkV0gpF0=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf</key>

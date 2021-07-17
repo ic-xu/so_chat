@@ -36,6 +36,9 @@ dependencies:
     # 聊天气泡组件
     bubble: ^1.2.1
 
+    # 登录界面插件
+    flutter_login: ^2.1.0
+
     # enmoj 选择器,依赖 https://github.com/Fintasys/emoji_picker_flutter 这个开源项目
     emoji_picker_flutter:
         git:

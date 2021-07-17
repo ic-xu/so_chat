@@ -8,12 +8,12 @@ import 'package:flutter/material.dart';
 import 'chat_other_message_list_item.dart';
 
 /// Example for EmojiPickerFlutter
-class EnmojApp extends StatefulWidget {
+class ChatMessageList extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<EnmojApp> {
+class _MyAppState extends State<ChatMessageList> {
   List messageList = [];
   final TextEditingController _controller = TextEditingController();
   bool emojiShowing = false;
@@ -209,7 +209,9 @@ class _MyAppState extends State<EnmojApp> {
 
   List<ChatMessage> _getData() {
     List<ChatMessage> list = [];
-
+      for(int i =0;i<50;i++){
+        list.add(ChatMessage("m sadfasdf sdafas d 哈哈 😄 爱上 gga 哈哈哈  阿苏哈哈啥地方阿静说的话将阿什顿发阿克苏鲁返回阿斯科利绝代风华阿斯科利地方阿克里斯朵夫阿克苏鲁吧essage", 1, i%2));
+      }
     return list;
   }
 }
