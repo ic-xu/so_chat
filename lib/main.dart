@@ -1,7 +1,10 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:best_flutter_ui_templates/app_theme.dart';
+import 'package:best_flutter_ui_templates/provider/message_event_bus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'chat/chat_message_list.dart';
 import 'fitness_app/fitness_app_home_screen.dart';
 import 'login/login_screen.dart';
@@ -11,11 +14,20 @@ import 'introduction_animation/introduction_animation_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+  await SystemChrome
+      .setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
-  ]).then((_) => runApp(MyApp()));
-}
+  ])
+      .then((_) =>
+      runApp(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => MessageEventBus()),
+        ],
+        child: MyApp(),
+      ),));
+  }
+
 
 class MyApp extends StatelessWidget {
   @override
@@ -24,7 +36,7 @@ class MyApp extends StatelessWidget {
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
       statusBarBrightness:
-          !kIsWeb && Platform.isAndroid ? Brightness.dark : Brightness.light,
+      !kIsWeb && Platform.isAndroid ? Brightness.dark : Brightness.light,
       systemNavigationBarColor: Colors.white,
       systemNavigationBarDividerColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.dark,
@@ -40,12 +52,12 @@ class MyApp extends StatelessWidget {
       //导航主屏幕
       // home: FitnessAppHomeScreen(),
 
-        // Navigator.of(context).push(MaterialPageRoute(
-        //     builder:(context) => FitnessAppHomeScreen()
-        // ));
+      // Navigator.of(context).push(MaterialPageRoute(
+      //     builder:(context) => FitnessAppHomeScreen()
+      // ));
       // home: NavigationHomeScreen(),
       home: LoginScreen(),
-        // EnmojApp(),
+      // EnmojApp(),
     );
   }
 }

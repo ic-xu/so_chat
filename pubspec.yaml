@@ -33,6 +33,7 @@ dependencies:
     intl: ^0.17.0
     animations: ^2.0.0
 
+
     # 聊天气泡组件
     bubble: ^1.2.1
 
@@ -43,6 +44,15 @@ dependencies:
     emoji_picker_flutter:
         git:
             url: git://github.com/Fintasys/emoji_picker_flutter
+
+    # 自定义Mqtt客户端
+    mqtt_client:
+        git:
+            url: git://github.com/ic-xu/mqtt_client
+    #全局状态管理器
+    provider: ^5.0.0
+
+
 
 dev_dependencies:
     flutter_test:

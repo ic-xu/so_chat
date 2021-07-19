@@ -19,7 +19,7 @@ class ChatOtherMessageListItem extends StatelessWidget{
         Stack(children: [
           CircleAvatar(
             // child: Image.network("https://img-blog.csdnimg.cn/img_convert/3951983a356a18f1991c9151e0877957.png",fit: BoxFit.contain,),
-            // radius: 30.0,
+            radius: 15.0,
             foregroundImage: NetworkImage(
                 "https://img-blog.csdnimg.cn/img_convert/3951983a356a18f1991c9151e0877957.png"),
           ),
@@ -28,11 +28,13 @@ class ChatOtherMessageListItem extends StatelessWidget{
         Expanded(
           child: Bubble(
             margin: BubbleEdges.only(top: 20,right: 50),
-            padding: BubbleEdges.all(15),
+            padding: BubbleEdges.all(10),
             alignment: Alignment.topLeft,
             nip: BubbleNip.leftCenter,
+            nipOffset: -10,
+            radius: Radius.circular(20.0),
             color: Color.fromARGB(100, 88, 220, 220),
-            child: Text(message.message,style: TextStyle(fontSize: 18),),
+            child: Text(message.message,style: TextStyle(fontSize: 14),),
           ),
 
           // Container(

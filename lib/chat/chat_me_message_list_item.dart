@@ -15,26 +15,26 @@ class ChatMeMessageListItem extends StatelessWidget{
     return Row(
       textDirection: TextDirection.rtl,
       children: [
-        // Stack(
-        //
-        //     children: [
-        //       CircleAvatar(
-        //         // child: Image.network("https://img-blog.csdnimg.cn/img_convert/3951983a356a18f1991c9151e0877957.png",fit: BoxFit.contain,),
-        //         // radius: 30.0,
-        //         foregroundImage: NetworkImage(
-        //             "https://img-blog.csdnimg.cn/img_convert/3951983a356a18f1991c9151e0877957.png"),
-        //       ),
-        //     ]),
+        Container(
+          alignment: AlignmentDirectional.bottomCenter,
+            child :
+              CircleAvatar(
+                // child: Image.network("https://img-blog.csdnimg.cn/img_convert/3951983a356a18f1991c9151e0877957.png",fit: BoxFit.contain,),
+                radius: 15.0,
+                foregroundImage: NetworkImage(
+                    "https://img-blog.csdnimg.cn/img_convert/3951983a356a18f1991c9151e0877957.png"),
+              ),
+            ),
         Expanded(
           child: Bubble(
             margin: BubbleEdges.only(top: 20,left: 50),
-            padding: BubbleEdges.all(15),
+            padding: BubbleEdges.all(10),
             alignment: Alignment.topRight,
-            nip: BubbleNip.rightBottom,
-            nipOffset: 25,
-            radius: Radius.circular(10.0),
+            nip: BubbleNip.rightCenter,
+            nipOffset: -10,
+            radius: Radius.circular(20.0),
             color: Color.fromARGB(255, 225, 255, 199),
-            child: Text(message.message,style: TextStyle(fontSize: 18),),
+            child: Text(message.message,style: TextStyle(fontSize: 14),),
           ),
 
           // Container(

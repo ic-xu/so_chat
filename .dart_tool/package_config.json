@@ -3,7 +3,7 @@
   "packages": [
     {
       "name": "animations",
-      "rootUri": "file:///Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/animations-2.0.0",
+      "rootUri": "file:///Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/animations-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -62,6 +62,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "crypto",
+      "rootUri": "file:///Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.3",
       "packageUri": "lib/",
@@ -69,7 +75,13 @@
     },
     {
       "name": "emoji_picker_flutter",
-      "rootUri": "file:///Users/user/workspace/flutter/flutter/.pub-cache/git/emoji_picker_flutter-19283a008f108be7bcf41e7a11dcac2ef297fe20/",
+      "rootUri": "file:///Users/user/workspace/flutter/flutter/.pub-cache/git/emoji_picker_flutter-594f454d58533022611064236d6f524844733bd3/",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "event_bus",
+      "rootUri": "file:///Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/event_bus-2.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -99,7 +111,7 @@
     },
     {
       "name": "flutter_login",
-      "rootUri": "file:///Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.1.0",
+      "rootUri": "file:///Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_login-2.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -152,6 +164,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "mqtt_client",
+      "rootUri": "file:///Users/user/workspace/flutter/flutter/.pub-cache/git/mqtt_client-fef1082b603710db161c5127c23fcc6912b5c623/",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "nested",
       "rootUri": "file:///Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/nested-1.0.0",
       "packageUri": "lib/",
@@ -195,7 +213,7 @@
     },
     {
       "name": "plugin_platform_interface",
-      "rootUri": "file:///Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-2.0.0",
+      "rootUri": "file:///Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -326,7 +344,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-07-16T10:51:02.589085Z",
+  "generated": "2021-07-17T13:45:17.519358Z",
   "generator": "pub",
   "generatorVersion": "2.12.3"
 }

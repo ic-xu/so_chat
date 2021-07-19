@@ -1,8 +1,0 @@
-1<?xml version="1.0" encoding="utf-8"?>
-2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.fintays.emoji_picker_flutter" >
-4
-5    <uses-sdk android:minSdkVersion="16" />
-5-->/Users/user/workspace/flutter/flutter/.pub-cache/git/emoji_picker_flutter-19283a008f108be7bcf41e7a11dcac2ef297fe20/android/src/main/AndroidManifest.xml
-6
-7</manifest>

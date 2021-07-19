@@ -2,6 +2,7 @@ import 'package:best_flutter_ui_templates/fitness_app/models/tabIcon_data.dart';
 import 'package:best_flutter_ui_templates/fitness_app/training/training_screen.dart';
 import 'package:flutter/material.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
+import 'chat_history_list/chat_history_list.dart';
 import 'fitness_app_theme.dart';
 import 'my_diary/my_diary_screen.dart';
 
@@ -86,13 +87,24 @@ class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
                   tabBody =MyDiaryScreen(animationController: animationController);
                 });
               });
-            } else if (index == 1 || index == 3) {
+            } else if (index == 1) {
               animationController?.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
                 }
                 setState(() {
                   tabBody = TrainingScreen(animationController: animationController);
+                });
+              });
+            }
+            else if(index == 3){
+              animationController?.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody = ChatHistoryListScreen(animationController: animationController);
+                  // tabBody = TrainingScreen(animationController: animationController);
                 });
               });
             }
