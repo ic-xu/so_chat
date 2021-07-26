@@ -1,6 +1,9 @@
 # This is a generated file; do not edit or check into version control.
 emoji_picker_flutter=/Users/user/workspace/flutter/flutter/.pub-cache/git/emoji_picker_flutter-594f454d58533022611064236d6f524844733bd3/
+flutter_webrtc=/Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_webrtc-0.6.5/
+path_provider=/Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.2/
 path_provider_linux=/Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.0.0/
+path_provider_macos=/Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.0/
 path_provider_windows=/Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.0.1/
 shared_preferences=/Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-2.0.6/
 shared_preferences_linux=/Users/user/workspace/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-2.0.0/

@@ -25,7 +25,7 @@ class LoginScreen extends StatelessWidget {
   Future<String?> _authUser(LoginData data) async {
     print('Name: ${data.name}, Password: ${data.password}');
    var result = await Provider.of<MessageEventBus>(context!,listen: false)
-       .login("192.168.43.158",data.name,data.password);
+       .login("172.20.73.88",data.name,data.password);
     if(!result){
       return Future.value("登录失败……,请检查用户名和密码！");
     }

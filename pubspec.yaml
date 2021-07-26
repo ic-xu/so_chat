@@ -52,6 +52,10 @@ dependencies:
     #全局状态管理器
     provider: ^5.0.0
 
+    #webrtc插件
+    flutter_webrtc: ^0.6.5
+
+
 
 
 dev_dependencies:
