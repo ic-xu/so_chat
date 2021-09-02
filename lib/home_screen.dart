@@ -1,5 +1,6 @@
 import 'package:best_flutter_ui_templates/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'model/homelist.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -12,7 +13,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   List<HomeList> homeList = HomeList.homeList;
   AnimationController? animationController;
-  bool multiple = true;
+  RefreshController _refreshController = RefreshController();
+
+  // bool multiple = true;
+
+  //GrideView 的列数
+  int grideViewCoumCount = 1;
 
   @override
   void initState() {
@@ -57,20 +63,33 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         if (!snapshot.hasData) {
                           return const SizedBox();
                         } else {
-                          return GridView(
-                            padding: const EdgeInsets.only(
-                                top: 0, left: 12, right: 12),
-                            physics: const BouncingScrollPhysics(),
-                            scrollDirection: Axis.vertical,
-                            children: List<Widget>.generate(
-                              homeList.length,
-                              (int index) {
-                                final int count = homeList.length;
+                          return SmartRefresher(
+                            controller: _refreshController,
+                            onLoading: _onLoading,
+                            onRefresh: _onRefresh,
+                            enablePullDown: true,
+                            enablePullUp: true,
+                            child: GridView.builder(
+                              padding: const EdgeInsets.only(
+                                  top: 0, left: 12, right: 12),
+                              physics: const BouncingScrollPhysics(),
+                              scrollDirection: Axis.vertical,
+                              itemCount: homeList.length,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: grideViewCoumCount % 5 == 0
+                                    ? (++grideViewCoumCount) % 5
+                                    : grideViewCoumCount % 5,
+                                mainAxisSpacing: 12.0,
+                                crossAxisSpacing: 12.0,
+                                childAspectRatio: 1.5,
+                              ),
+                              itemBuilder: (context, index) {
                                 final Animation<double> animation =
                                     Tween<double>(begin: 0.0, end: 1.0).animate(
                                   CurvedAnimation(
                                     parent: animationController!,
-                                    curve: Interval((1 / count) * index, 1.0,
+                                    curve: Interval((1 / 5) * index, 1.0,
                                         curve: Curves.fastOutSlowIn),
                                   ),
                                 );
@@ -87,16 +106,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                             homeList[index].navigateScreen!,
                                       ),
                                     );
-                                  },
+                                  }, //点击事件
                                 );
+                                // return this._getData()[index];
                               },
-                            ),
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: multiple ? 2 : 1,
-                              mainAxisSpacing: 12.0,
-                              crossAxisSpacing: 12.0,
-                              childAspectRatio: 1.5,
                             ),
                           );
                         }
@@ -110,6 +123,24 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         },
       ),
     );
+  }
+
+  //刷新
+  void _onRefresh() async {
+    // monitor network fetch
+    await Future.delayed(Duration(milliseconds: 1000));
+    // if failed,use refreshFailed()
+    _refreshController.refreshCompleted();
+  }
+
+  //加载
+  void _onLoading() async {
+    // monitor network fetch
+    await Future.delayed(Duration(milliseconds: 1000));
+
+    if (mounted) setState(() {});
+    // if failed,use loadFailed(),if no data return,use LoadNodata()
+    _refreshController.loadFailed();
   }
 
   Widget appBar() {
@@ -152,12 +183,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   borderRadius:
                       BorderRadius.circular(AppBar().preferredSize.height),
                   child: Icon(
-                    multiple ? Icons.dashboard : Icons.view_agenda,
+                    grideViewCoumCount % 2 == 0
+                        ? Icons.dashboard
+                        : Icons.view_agenda,
                     color: AppTheme.dark_grey,
                   ),
                   onTap: () {
                     setState(() {
-                      multiple = !multiple;
+                      grideViewCoumCount++;
+                      // multiple = !multiple;
                     });
                   },
                 ),

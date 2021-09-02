@@ -2,9 +2,11 @@ import 'dart:ui';
 import 'package:best_flutter_ui_templates/hotel_booking/calendar_popup_view.dart';
 import 'package:best_flutter_ui_templates/hotel_booking/hotel_list_view.dart';
 import 'package:best_flutter_ui_templates/hotel_booking/model/hotel_list_data.dart';
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'filters_screen.dart';
 import 'hotel_app_theme.dart';
 
@@ -15,17 +17,20 @@ class HotelHomeScreen extends StatefulWidget {
 
 class _HotelHomeScreenState extends State<HotelHomeScreen>
     with TickerProviderStateMixin {
-  AnimationController? animationController;
+  // AnimationController? animationController;
   List<HotelListData> hotelList = HotelListData.hotelList;
-  final ScrollController _scrollController = ScrollController();
-
+  ScrollController? _scrollController;
+  //listView 刷新 控制器
+  RefreshController? _refreshController;
   DateTime startDate = DateTime.now();
   DateTime endDate = DateTime.now().add(const Duration(days: 5));
 
   @override
   void initState() {
-    animationController = AnimationController(
-        duration: const Duration(milliseconds: 1000), vsync: this);
+    // animationController = AnimationController(
+    //     duration: const Duration(milliseconds: 1000), vsync: this);
+    _scrollController = ScrollController();
+    _refreshController = RefreshController(initialRefresh: false);
     super.initState();
   }
 
@@ -36,7 +41,9 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
 
   @override
   void dispose() {
-    animationController?.dispose();
+    // animationController?.dispose();
+    _scrollController!.dispose();
+    _refreshController!.dispose();
     super.dispose();
   }
 
@@ -70,8 +77,12 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                                   (BuildContext context, int index) {
                                 return Column(
                                   children: <Widget>[
-                                    getSearchBarUI(),
-                                    getTimeDateUI(),
+                                    //轮播图
+                                    getBannerUI(),
+                                    //搜索栏
+                                    // getSearchBarUI(),
+                                    //时间选择器
+                                    // getTimeDateUI(),
                                   ],
                                 );
                               }, childCount: 1),
@@ -88,28 +99,37 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                         body: Container(
                           color:
                               HotelAppTheme.buildLightTheme().backgroundColor,
-                          child: ListView.builder(
-                            itemCount: hotelList.length,
-                            padding: const EdgeInsets.only(top: 8),
-                            scrollDirection: Axis.vertical,
-                            itemBuilder: (BuildContext context, int index) {
-                              final int count =
-                                  hotelList.length > 10 ? 10 : hotelList.length;
-                              final Animation<double> animation =
-                                  Tween<double>(begin: 0.0, end: 1.0).animate(
-                                      CurvedAnimation(
-                                          parent: animationController!,
-                                          curve: Interval(
-                                              (1 / count) * index, 1.0,
-                                              curve: Curves.fastOutSlowIn)));
-                              animationController?.forward();
-                              return HotelListView(
-                                callback: () {},
-                                hotelData: hotelList[index],
-                                animation: animation,
-                                animationController: animationController!,
-                              );
-                            },
+                          child: SmartRefresher(
+                            enablePullDown: true,
+                            enablePullUp: true,
+                            header: WaterDropHeader(),
+                            controller: _refreshController!,
+                            onRefresh: _onRefresh,
+                            onLoading: _onLoading,
+                            child: ListView.builder(
+                              itemCount: hotelList.length,
+                              padding: const EdgeInsets.only(top: 8),
+                              scrollDirection: Axis.vertical,
+                              itemBuilder: (BuildContext context, int index) {
+                                final int count = hotelList.length > 10
+                                    ? 10
+                                    : hotelList.length;
+                                // final Animation<double> animation =
+                                //     Tween<double>(begin: 0.0, end: 1.0).animate(
+                                //         CurvedAnimation(
+                                //             parent: animationController!,
+                                //             curve: Interval(
+                                //                 (1 / count) * index, 1.0,
+                                //                 curve: Curves.fastOutSlowIn)));
+                                // animationController?.forward();
+                                return HotelListView(
+                                  callback: () {},
+                                  hotelData: hotelList[index],
+                                  // animation: animation,
+                                  // animationController: animationController!,
+                                );
+                              },
+                            ),
                           ),
                         ),
                       ),
@@ -122,6 +142,24 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
         ),
       ),
     );
+  }
+
+  //刷新
+  void _onRefresh() async {
+    // monitor network fetch
+    await Future.delayed(Duration(milliseconds: 1000));
+    // if failed,use refreshFailed()
+    _refreshController!.refreshCompleted();
+  }
+
+  //加载
+  void _onLoading() async {
+    // monitor network fetch
+    await Future.delayed(Duration(milliseconds: 1000));
+
+    if (mounted) setState(() {});
+    // if failed,use loadFailed(),if no data return,use LoadNodata()
+    _refreshController!.loadNoData();
   }
 
   Widget getListUI() {
@@ -151,19 +189,19 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                     itemBuilder: (BuildContext context, int index) {
                       final int count =
                           hotelList.length > 10 ? 10 : hotelList.length;
-                      final Animation<double> animation =
-                          Tween<double>(begin: 0.0, end: 1.0).animate(
-                              CurvedAnimation(
-                                  parent: animationController!,
-                                  curve: Interval((1 / count) * index, 1.0,
-                                      curve: Curves.fastOutSlowIn)));
-                      animationController?.forward();
+                      // final Animation<double> animation =
+                          // Tween<double>(begin: 0.0, end: 1.0).animate(
+                      //         CurvedAnimation(
+                      //             parent: animationController!,
+                      //             curve: Interval((1 / count) * index, 1.0,
+                      //                 curve: Curves.fastOutSlowIn)));
+                      // animationController?.forward();
 
                       return HotelListView(
                         callback: () {},
                         hotelData: hotelList[index],
-                        animation: animation,
-                        animationController: animationController!,
+                        // animation: animation,
+                        // animationController: animationController!,
                       );
                     },
                   );
@@ -179,29 +217,50 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
   Widget getHotelViewList() {
     final List<Widget> hotelListViews = <Widget>[];
     for (int i = 0; i < hotelList.length; i++) {
-      final int count = hotelList.length;
-      final Animation<double> animation =
-          Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(
-          parent: animationController!,
-          curve: Interval((1 / count) * i, 1.0, curve: Curves.fastOutSlowIn),
-        ),
-      );
+      // final int count = hotelList.length;
+      // final Animation<double> animation =
+          // Tween<double>(begin: 0.0, end: 1.0).animate(
+        // CurvedAnimation(
+        //   parent: animationController!,
+        //   curve: Interval((1 / count) * i, 1.0, curve: Curves.fastOutSlowIn),
+        // ),
+      // );
       hotelListViews.add(
         HotelListView(
           callback: () {},
           hotelData: hotelList[i],
-          animation: animation,
-          animationController: animationController!,
+          // animation: animation,
+          // animationController: animationController!,
         ),
       );
     }
-    animationController?.forward();
+    // animationController?.forward();
     return Column(
       children: hotelListViews,
     );
   }
 
+  Widget getBannerUI() {
+    return AspectRatio(
+      aspectRatio: 16 / 9,
+      child: Swiper(
+        itemCount: 3,
+        pagination: SwiperPagination(),
+        control: SwiperControl(),
+        controller: SwiperController(),
+        autoplay: true,
+        loop: true,
+        itemBuilder: (BuildContext context, int index) {
+          return Image.network(
+            "https://img95.699pic.com/photo/50055/5642.jpg_wh300.jpg",
+            fit: BoxFit.fill,
+          );
+        },
+      ),
+    );
+  }
+
+  //时间选择组件
   Widget getTimeDateUI() {
     return Padding(
       padding: const EdgeInsets.only(left: 18, bottom: 16),
@@ -320,6 +379,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
     );
   }
 
+  //搜索组件
   Widget getSearchBarUI() {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
@@ -395,6 +455,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
     );
   }
 
+  //过滤组件
   Widget getFilterBarUI() {
     return Stack(
       children: <Widget>[
@@ -491,12 +552,13 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
     );
   }
 
+  //dialog
   void showDemoDialog({BuildContext? context}) {
     showDialog<dynamic>(
       context: context!,
       builder: (BuildContext context) => CalendarPopupView(
         barrierDismissible: true,
-        minimumDate: DateTime.now(),
+        // minimumDate: DateTime.now(),
         //  maximumDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 10),
         initialEndDate: endDate,
         initialStartDate: startDate,
@@ -605,6 +667,7 @@ class ContestTabHeader extends SliverPersistentHeaderDelegate {
   ContestTabHeader(
     this.searchUI,
   );
+
   final Widget searchUI;
 
   @override

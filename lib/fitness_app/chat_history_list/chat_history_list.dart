@@ -1,5 +1,6 @@
 import 'package:best_flutter_ui_templates/chat/chat_message_list.dart';
 import 'package:best_flutter_ui_templates/fitness_app/chat_history_list/chat_history_list_item.dart';
+import 'package:best_flutter_ui_templates/fitness_app/chat_history_list/model/conversation.dart';
 import 'package:best_flutter_ui_templates/fitness_app/ui_view/area_list_view.dart';
 import 'package:best_flutter_ui_templates/fitness_app/chat_history_list/chat_history_item_view.dart';
 import 'package:best_flutter_ui_templates/fitness_app/ui_view/running_view.dart';
@@ -8,6 +9,7 @@ import 'package:best_flutter_ui_templates/fitness_app/ui_view/workout_view.dart'
 import 'package:flutter/material.dart';
 
 import '../fitness_app_theme.dart';
+import 'conversation_item.dart';
 
 class ChatHistoryListScreen extends StatefulWidget {
   const ChatHistoryListScreen({Key? key, this.animationController})
@@ -23,9 +25,9 @@ class _TrainingScreenState extends State<ChatHistoryListScreen>
     with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
 
-  List<Widget> listViews = <Widget>[];
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
+
 
   @override
   void initState() {
@@ -33,7 +35,6 @@ class _TrainingScreenState extends State<ChatHistoryListScreen>
         CurvedAnimation(
             parent: widget.animationController!,
             curve: Interval(0, 0.5, curve: Curves.fastOutSlowIn)));
-    addAllListData();
 
     scrollController.addListener(() {
       if (scrollController.offset >= 24) {
@@ -60,24 +61,6 @@ class _TrainingScreenState extends State<ChatHistoryListScreen>
     super.initState();
   }
 
-  void addAllListData() {
-    const int count = 6;
-
-    for (int a = 0; a < 100; a++) {
-      listViews.add(
-        ChatHistoryItemView(
-          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-              CurvedAnimation(
-                  parent: widget.animationController!,
-                  curve: Interval((1 / count) * 3, 1.0,
-                      curve: Curves.fastOutSlowIn))),
-          animationController: widget.animationController!,
-        ),
-      );
-    }
-
-    // listViews.add(ChatHistoryListItem());
-  }
 
   Future<bool> getData() async {
     await Future<dynamic>.delayed(const Duration(milliseconds: 50));
@@ -118,15 +101,16 @@ class _TrainingScreenState extends State<ChatHistoryListScreen>
                   24,
               bottom: 62 + MediaQuery.of(context).padding.bottom,
             ),
-            itemCount: listViews.length,
+            itemCount: Conversation.mockConversations.length,
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int index) {
               widget.animationController?.forward();
               return GestureDetector(
-                child: listViews[index],
+                child: ConversatonItem(Conversation.mockConversations[index]),
                 onTap: () => {
+                  Conversation.mockConversations[index].unreadMsgCount=0,
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ChatMessageList(),
+                    builder: (context) => ChatMessageList(Conversation.mockConversations[index]),
                   )),
                 },
               );

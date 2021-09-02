@@ -8,6 +8,7 @@ class ChatMessage {
   late int direction;
   late String toOrFromUserId;
 
+
   ChatMessage(this.message, this.type, this.direction, this.toOrFromUserId);
 
   /// A necessary factory constructor for creating a new User instance

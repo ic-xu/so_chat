@@ -18,11 +18,13 @@
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/emoji_picker_flutter/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/emoji_picker_flutter/build" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/emoji_picker_flutter/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.pub" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
     <orderEntry type="library" name="Flutter Plugins" level="project" />
-    <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>

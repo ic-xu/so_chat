@@ -2,12 +2,17 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:best_flutter_ui_templates/chat/chat_message_list.dart';
+import 'package:best_flutter_ui_templates/chat/webrtc/call_sample.dart';
+import 'package:best_flutter_ui_templates/connect_manager/connect_socket_manager.dart';
 import 'package:best_flutter_ui_templates/fitness_app/fitness_app_home_screen.dart';
+import 'package:best_flutter_ui_templates/home/home_page.dart';
 import 'package:best_flutter_ui_templates/provider/message_event_bus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:provider/provider.dart';
+
+import '../navigation_home_screen.dart';
 
 
 const users = const {
@@ -24,8 +29,9 @@ class LoginScreen extends StatelessWidget {
 
   Future<String?> _authUser(LoginData data) async {
     print('Name: ${data.name}, Password: ${data.password}');
-   var result = await Provider.of<MessageEventBus>(context!,listen: false)
-       .login("172.20.73.88",data.name,data.password);
+    var result = await ConnectionManager.getInstance().login("120.77.220.166",data.name,data.password);
+   // var result = await Provider.of<MessageEventBus>(context!,listen: false)
+   //     .login("120.77.220.166",data.name,data.password);
     if(!result){
       return Future.value("登录失败……,请检查用户名和密码！");
     }
@@ -55,8 +61,13 @@ class LoginScreen extends StatelessWidget {
       userType: LoginUserType.name,
       onSubmitAnimationCompleted: () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => FitnessAppHomeScreen(),
+          // builder: (context) => FitnessAppHomeScreen(),
+          // builder: (context) => NavigationHomeScreen(),
           // builder: (context) => ChatMessageList(),
+          //   builder: (context) =>  CallSample(),
+          builder: (context) => HomePageScreen(),
+
+
         ));
       },
       messages: LoginMessages(
