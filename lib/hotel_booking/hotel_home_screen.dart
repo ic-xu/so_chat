@@ -1,7 +1,7 @@
 import 'dart:ui';
-import 'package:best_flutter_ui_templates/hotel_booking/calendar_popup_view.dart';
-import 'package:best_flutter_ui_templates/hotel_booking/hotel_list_view.dart';
-import 'package:best_flutter_ui_templates/hotel_booking/model/hotel_list_data.dart';
+import 'package:so_chat/hotel_booking/calendar_popup_view.dart';
+import 'package:so_chat/hotel_booking/hotel_list_view.dart';
+import 'package:so_chat/hotel_booking/model/hotel_list_data.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

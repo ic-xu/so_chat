@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:best_flutter_ui_templates/chat/chat_me_message_list_item.dart';
-import 'package:best_flutter_ui_templates/chat/chat_message.dart';
-import 'package:best_flutter_ui_templates/connect_manager/connect_socket_manager.dart';
-import 'package:best_flutter_ui_templates/fitness_app/chat_history_list/model/conversation.dart';
-import 'package:best_flutter_ui_templates/fitness_app/fitness_app_theme.dart';
-import 'package:best_flutter_ui_templates/main.dart';
+import 'package:so_chat/chat/chat_me_message_list_item.dart';
+import 'package:so_chat/chat/chat_message.dart';
+import 'package:so_chat/connect_manager/connect_socket_manager.dart';
+import 'package:so_chat/fitness_app/chat_history_list/model/conversation.dart';
+import 'package:so_chat/fitness_app/fitness_app_theme.dart';
+import 'package:so_chat/main.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:mqtt_client/mqtt_client.dart';

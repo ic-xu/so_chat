@@ -1,6 +1,4 @@
 
-import 'package:best_flutter_ui_templates/fitness_app/ui_view/area_list_view.dart';
-import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 
 import '../fitness_app_theme.dart';

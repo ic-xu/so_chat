@@ -1,5 +1,5 @@
-import 'package:best_flutter_ui_templates/chat/widget/GStyle.dart';
-import 'package:best_flutter_ui_templates/fitness_app/chat_history_list/model/conversation.dart';
+import 'package:so_chat/chat/widget/GStyle.dart';
+import 'package:so_chat/fitness_app/chat_history_list/model/conversation.dart';
 import 'package:flutter/material.dart';
 
 class ConversatonItem extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:best_flutter_ui_templates/app_theme.dart';
+import 'package:so_chat/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class InviteFriend extends StatefulWidget {

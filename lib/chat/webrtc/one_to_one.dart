@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:best_flutter_ui_templates/chat/chat_message_list.dart';
-import 'package:best_flutter_ui_templates/connect_manager/connect_socket_manager.dart';
-import 'package:best_flutter_ui_templates/fitness_app/chat_history_list/model/conversation.dart';
+import 'package:so_chat/chat/chat_message_list.dart';
+import 'package:so_chat/connect_manager/connect_socket_manager.dart';
+import 'package:so_chat/fitness_app/chat_history_list/model/conversation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mqtt_client/mqtt_client.dart';

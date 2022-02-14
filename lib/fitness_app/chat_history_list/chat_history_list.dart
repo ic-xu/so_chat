@@ -1,12 +1,6 @@
-import 'package:best_flutter_ui_templates/chat/chat_message_list.dart';
-import 'package:best_flutter_ui_templates/fitness_app/chat_history_list/chat_history_list_item.dart';
-import 'package:best_flutter_ui_templates/fitness_app/chat_history_list/model/conversation.dart';
-import 'package:best_flutter_ui_templates/fitness_app/ui_view/area_list_view.dart';
-import 'package:best_flutter_ui_templates/fitness_app/chat_history_list/chat_history_item_view.dart';
-import 'package:best_flutter_ui_templates/fitness_app/ui_view/running_view.dart';
-import 'package:best_flutter_ui_templates/fitness_app/ui_view/title_view.dart';
-import 'package:best_flutter_ui_templates/fitness_app/ui_view/workout_view.dart';
 import 'package:flutter/material.dart';
+import 'package:so_chat/chat/chat_message_list.dart';
+import 'package:so_chat/fitness_app/chat_history_list/model/conversation.dart';
 
 import '../fitness_app_theme.dart';
 import 'conversation_item.dart';

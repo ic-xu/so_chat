@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
 
-import 'package:best_flutter_ui_templates/connect_manager/connect_socket_manager.dart';
+import 'package:so_chat/connect_manager/connect_socket_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:mqtt_client/mqtt_client.dart';

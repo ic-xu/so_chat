@@ -1,4 +1,4 @@
-import 'package:best_flutter_ui_templates/fitness_app/chat_history_list/model/conversation.dart';
+import 'package:so_chat/fitness_app/chat_history_list/model/conversation.dart';
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 

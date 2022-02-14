@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:best_flutter_ui_templates/app_theme.dart';
-import 'package:best_flutter_ui_templates/provider/message_event_bus.dart';
+import 'package:so_chat/app_theme.dart';
+import 'package:so_chat/provider/message_event_bus.dart';
 import 'package:event_bus/event_bus.dart' as events;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';

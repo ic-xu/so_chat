@@ -1,9 +1,9 @@
-import 'package:best_flutter_ui_templates/fitness_app/chat_history_list/chat_history_list.dart';
-import 'package:best_flutter_ui_templates/fitness_app/fitness_app_home_screen.dart';
-import 'package:best_flutter_ui_templates/fitness_app/fitness_app_theme.dart';
-import 'package:best_flutter_ui_templates/fitness_app/training/training_screen.dart';
-import 'package:best_flutter_ui_templates/hotel_booking/filters_screen.dart';
-import 'package:best_flutter_ui_templates/hotel_booking/hotel_home_screen.dart';
+import 'package:so_chat/fitness_app/chat_history_list/chat_history_list.dart';
+import 'package:so_chat/fitness_app/fitness_app_home_screen.dart';
+import 'package:so_chat/fitness_app/fitness_app_theme.dart';
+import 'package:so_chat/fitness_app/training/training_screen.dart';
+import 'package:so_chat/hotel_booking/filters_screen.dart';
+import 'package:so_chat/hotel_booking/hotel_home_screen.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
