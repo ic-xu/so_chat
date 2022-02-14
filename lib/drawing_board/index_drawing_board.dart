@@ -1,9 +1,11 @@
 import 'dart:typed_data';
 
+import 'package:drawingboard/drawingboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_drawing_board/flutter_drawing_board.dart';
+
+import 'bacground.dart';
 
 class IndexDrawingBoard extends StatefulWidget {
   const IndexDrawingBoard({Key? key}) : super(key: key);
@@ -51,6 +53,19 @@ class _DrawingBoard extends State<IndexDrawingBoard> {
     );
   }
 
+  /// 构建绘制层
+  Widget get _buildBgPainter {
+    return Positioned(
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      child: CustomPaint(
+        painter: BgPainter(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,8 +83,8 @@ class _DrawingBoard extends State<IndexDrawingBoard> {
           Expanded(
             child: DrawingBoard(
               controller: _drawingController,
-              background:
-                  Container(width: 1400, height: 400, color: Colors.white),
+              background:_buildBgPainter,
+                  // Container(width: 1400, height: 400, color: Colors.white),
               showDefaultActions: true,
               showDefaultTools: true,
             ),

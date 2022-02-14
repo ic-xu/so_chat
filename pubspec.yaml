@@ -69,7 +69,9 @@ dependencies:
     flutter_material_color_picker: ^1.0.0
 
     # 绘画板
-    flutter_drawing_board: ^0.2.6
+    drawingboard:
+        git:
+            url: git://github.com/ic-xu/drawingboard
 
 
 dev_dependencies:
