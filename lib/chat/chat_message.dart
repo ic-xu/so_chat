@@ -4,19 +4,19 @@ import 'dart:convert' show json;
 
 class ChatMessage {
   late String message;
-  late int type;
+  late int messageType;
   late int direction;
-  late String toOrFromUserId;
+  late String userId;
 
 
-  ChatMessage(this.message, this.type, this.direction, this.toOrFromUserId);
+  ChatMessage(this.message, this.messageType, this.direction, this.userId);
 
   /// A necessary factory constructor for creating a new User instance
   /// from a map. Pass the map to the generated `_$UserFromJson()` constructor.
   /// The constructor is named after the source class, in this case, User.
   static ChatMessage fromMap(Map<String, dynamic> json) {
-    return new ChatMessage(json["message"], json["type"], json["direction"],
-        json["toOrFromUserId"]);
+    return new ChatMessage(json["message"], json["messageType"], json["direction"],
+        json["userId"]);
   }
 
   /// `toJson` is the convention for a class to declare support for serialization
@@ -25,9 +25,9 @@ class ChatMessage {
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = new Map();
     map["message"] = this.message;
-    map["type"] = this.type;
+    map["messageType"] = this.messageType;
     map["direction"] = this.direction;
-    map["toOrFromUserId"] = this.toOrFromUserId;
+    map["userId"] = this.userId;
     return map;
   }
 

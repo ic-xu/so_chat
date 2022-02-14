@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
@@ -7,18 +8,18 @@ import 'package:best_flutter_ui_templates/connect_manager/connect_socket_manager
 import 'package:best_flutter_ui_templates/fitness_app/chat_history_list/model/conversation.dart';
 import 'package:best_flutter_ui_templates/fitness_app/fitness_app_theme.dart';
 import 'package:best_flutter_ui_templates/main.dart';
-import 'package:best_flutter_ui_templates/provider/message_event_bus.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:mqtt_client/mqtt_client.dart';
 
 import 'chat_other_message_list_item.dart';
 
 /// Example for EmojiPickerFlutter
 class ChatMessageList extends StatefulWidget {
-  Conversation conversation;
+  final Conversation conversation;
+  final String toUserName;
 
-  ChatMessageList(this.conversation);
+  ChatMessageList(this.conversation, this.toUserName);
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -39,24 +40,33 @@ class _MyAppState extends State<ChatMessageList> with WidgetsBindingObserver {
     _listController.addListener(() {});
     // messageList.reversed;
     messageList.addAll(_getData());
-   messageList =  messageList.reversed.toList();
+    messageList = messageList.reversed.toList();
+    _updateMessageList();
     super.initState();
     //初始化
     WidgetsBinding.instance!.addObserver(this);
   }
 
   _updateMessageList() {
-    mainEventBus.on<ChatMessage>().listen((receiverMessage) {
-      messageList.add(receiverMessage);
+    mainEventBus.on<MqttCustomerMessage>().listen((mqttCustomerMessage) {
+      if (mqttCustomerMessage.messageType == 21) {
+        String messageString =
+            utf8.decoder.convert(mqttCustomerMessage.payload.message!.toList());
+        ChatMessage receiverMessage = ChatMessage.fromJson(messageString);
+        receiverMessage.direction = 0;
+        setState(() {
+          messageList.insert(0,receiverMessage);
+        });
+      }
     });
   }
 
-  @override
-  void didChangeDependencies() {
-    _updateMessageList();
-    // TODO: implement didChangeDependencies
-    super.didChangeDependencies();
-  }
+  // @override
+  // void didChangeDependencies() {
+  //   _updateMessageList();
+  //   // TODO: implement didChangeDependencies
+  //   super.didChangeDependencies();
+  // }
 
   @override
   void deactivate() {
@@ -150,8 +160,8 @@ class _MyAppState extends State<ChatMessageList> with WidgetsBindingObserver {
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 1.0),
-                        child:Focus(
-                          child:  TextFormField(
+                        child: Focus(
+                          child: TextFormField(
                               controller: _controller,
                               focusNode: _focusNode,
                               maxLines: 2,
@@ -182,15 +192,14 @@ class _MyAppState extends State<ChatMessageList> with WidgetsBindingObserver {
                                   borderSide: BorderSide(color: Colors.grey),
                                 ),
                               )),
-                          onFocusChange: (focus){
-                            if(focus){
+                          onFocusChange: (focus) {
+                            if (focus) {
                               setState(() {
                                 emojiShowing = false;
                               });
                             }
                           },
                         ),
-
                       ),
                     ),
 
@@ -211,17 +220,18 @@ class _MyAppState extends State<ChatMessageList> with WidgetsBindingObserver {
                               return;
                             }
 
-                            var message = ChatMessage(sendText, 1, 1, "xxxx");
+                            var message =
+                                ChatMessage(sendText, 1, 1, widget.toUserName);
                             setState(() {
                               // _getData().add(message);
-                              messageList.insert(0,message);
+                              messageList.insert(0, message);
                             });
 
                             //  清空输入控件
                             _controller.clear();
                             // TODO send message
                             ConnectionManager.getInstance()
-                                .sendCustomerMessage(message);
+                                .sendChatMessage(message);
                           },
                           icon: const Icon(
                             Icons.send,
@@ -243,7 +253,7 @@ class _MyAppState extends State<ChatMessageList> with WidgetsBindingObserver {
                     onBackspacePressed: _onBackspacePressed,
                     config: const Config(
                         columns: 7,
-                        emojiSizeMax: 32 *  1.30,
+                        emojiSizeMax: 32 * 1.30,
                         verticalSpacing: 0,
                         horizontalSpacing: 0,
                         initCategory: Category.RECENT,

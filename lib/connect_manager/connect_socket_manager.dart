@@ -24,9 +24,8 @@ class ConnectionManager {
   }
 
   ConnectionManager._internal();
-
-   Future configure(String url) async {
-    await login(url, "testuser", "passwd");
+    configure(String url)  {
+     // login(url, "testuser", "passwd");
   }
 
    _initMqttClient(String socketUrl, String username) {
@@ -97,11 +96,11 @@ class ConnectionManager {
     print('EXAMPLE::Ping response client callback invoked');
   }
 
-   login(String socketUrl, String username, String password) async {
+   login(String socketUrl, String username, String password) {
     try {
       int rand = new Random().nextInt(1000000);
       _initMqttClient(socketUrl, username+rand.toRadixString(2));
-      await client!.connect(username, password);
+      client!.connect(username, password);
       client!.customer!.listen((MqttCustomerMessage messages) {
         _onMessage(messages);
       });
@@ -120,42 +119,33 @@ class ConnectionManager {
   }
 
   static _onMessage(MqttCustomerMessage message) {
-    print(utf8.decoder.convert(message.payload.message!.toList()));
-    String messageString =
-        utf8.decoder.convert(message.payload.message!.toList());
+    // print(utf8.decoder.convert(message.payload.message!.toList()));
+    // String messageString =
+    //     utf8.decoder.convert(message.payload.message!.toList());
     // receiverMessage = ChatMessage.fromJson(messageString);
     // receiverMessage!.direction = 0;
-
-    switch(message.messageType){
-      case 1:
-       var receiverMessage = ChatMessage.fromJson(messageString);
-        receiverMessage.direction = 0;
-        mainEventBus.streamController.add(receiverMessage);
-        break;
-
-        //信令
-      case 20:
-        break;
-
-    }
+    mainEventBus.streamController.add(message);
   }
 
-  sendCustomerMessage(ChatMessage? chatMessage) {
+  sendChatMessage(ChatMessage? chatMessage) {
     final builder = MqttClientPayloadBuilder();
 
     builder.addUTF8String(chatMessage!.toJson());
-    var message = MqttCustomerMessage(1, builder.payload);
+    var message = MqttCustomerMessage(21, builder.payload);
    // var header =  MqttHeader().asType(MqttMessageType.reserved1);
     // header.qos = MqttQos.exactlyOnce;
     // message.header =  header;
     client!.sendCustomerMessage(message);
   }
 
+  sendCustomerMessage(MqttCustomerMessage customerMessage) {
+    client!.sendCustomerMessage(customerMessage);
+  }
 
-  sendMessage(String jsonMessageString) async {
+  sendMessage(String jsonMessageString,int messageType) {
     final builder = MqttClientPayloadBuilder();
     builder.addUTF8String(jsonMessageString);
-    var message = MqttCustomerMessage(10, builder.payload);
+    var message = MqttCustomerMessage(messageType, builder.payload);
     // var header =  MqttHeader().asType(MqttMessageType.reserved1);
     // header.qos = MqttQos.exactlyOnce;
     // message.header =  header;
@@ -163,11 +153,11 @@ class ConnectionManager {
   }
 
 
-  static getInstance() {
+  static getInstance()  {
      if(null == _singleton){
        _singleton = ConnectionManager._internal();
        // 120.77.220.166
-       // _singleton!.configure("120.77.220.166");
+       // _singleton!.configure("localhost");
      }
     return _singleton;
   }

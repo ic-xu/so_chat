@@ -38,14 +38,14 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/shared_preferences/ios"
 
 SPEC CHECKSUMS:
-  emoji_picker_flutter: 4f9a1ac31d355e1bf9622a1e821a809149130127
-  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
-  flutter_webrtc: 39898454258b54ba51996850d5da8d5d53bf1524
+  emoji_picker_flutter: 09f120957e2eadf9ad91fec1e647e4a0d6c5ec42
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  flutter_webrtc: d8cc14504fea2eda4723e47088829c6a2c4ad851
   GoogleWebRTC: b39a78c4f5cc6b0323415b9233db03a2faa7b0f0
   Libyuv: 5f79ced0ee66e60a612ca97de1e6ccacd187a437
-  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
-  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
+  path_provider: 5649827555480620ceb7348a3611f72e09b79faf
+  shared_preferences: 691d31afece1512d5100f38cb429e9952267c340
 
-PODFILE CHECKSUM: 3ed452d0a19c518c00c368fa2b2bb74430f6d271
+PODFILE CHECKSUM: 88c78c3812d91a10ef76081de3d06ea5b2b4ff25
 
 COCOAPODS: 1.10.1
