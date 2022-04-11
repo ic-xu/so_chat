@@ -265,9 +265,6 @@ class _MyAppState extends State<ChatMessageList> with WidgetsBindingObserver {
                         backspaceColor: Colors.blue,
                         showRecentsTab: true,
                         recentsLimit: 28,
-                        noRecentsText: 'No Recents',
-                        noRecentsStyle:
-                            TextStyle(fontSize: 20, color: Colors.black26),
                         categoryIcons: CategoryIcons(),
                         buttonMode: ButtonMode.MATERIAL)),
               ),

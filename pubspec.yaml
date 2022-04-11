@@ -43,12 +43,12 @@ dependencies:
     # enmoj 选择器,依赖 https://github.com/Fintasys/emoji_picker_flutter 这个开源项目
     emoji_picker_flutter:
         git:
-            url: git://github.com/Fintasys/emoji_picker_flutter
+            url: https://github.com/Fintasys/emoji_picker_flutter.git
 
     # 自定义Mqtt客户端
     mqtt_client:
         git:
-            url: git://github.com/ic-xu/mqtt_client
+            url: https://github.com/ic-xu/mqtt_client.git
     #全局状态管理器
     provider: ^5.0.0
     #玻璃效果
@@ -58,7 +58,7 @@ dependencies:
     #上拉刷新，下拉加载
     pull_to_refresh: ^2.0.0
     #webrtc插件
-    flutter_webrtc: ^0.6.7
+    flutter_webrtc: ^0.8.5
     #底部导航栏插件
     convex_bottom_bar: ^3.0.0
 
@@ -71,7 +71,7 @@ dependencies:
     # 绘画板
     drawingboard:
         git:
-            url: git://github.com/ic-xu/drawingboard
+            url: git@github.com:ic-xu/drawingboard.git
 
 
 dev_dependencies:

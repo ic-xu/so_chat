@@ -228,6 +228,7 @@ class _GetUserMediaSampleState extends State<GetUserMediaSample> {
   }
 
   void _selectAudioOutput(String deviceId) {
-    _localRenderer.audioOutput = deviceId;
+    // _localRenderer.audioOutput = deviceId;
+    _localRenderer.audioOutput(deviceId);
   }
 }
